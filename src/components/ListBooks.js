@@ -1,16 +1,14 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import BookShelf from './BookShelf'
-import WantRead from './WantRead'
-import Read from './Read'
 
 class ListBooks extends Component {
     render() {
       const shelfs = [ 
-      { title: 'Currently Reading', filter: 'currentlyReading' },
-      { title: 'Want to Read', filter: 'wantToRead' },
-      { title: 'Read', filter: 'read' },
-    ]
+        { title: 'Currently Reading', filter: 'currentlyReading' },
+        { title: 'Want to Read', filter: 'wantToRead' },
+        { title: 'Read', filter: 'read' },
+      ]
         return(
             <div className="list-books">
             <div className="list-books-title">

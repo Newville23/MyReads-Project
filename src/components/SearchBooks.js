@@ -2,19 +2,47 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import escapeRegExp from 'escape-string-regexp'
-import sortBy from 'sort-by'
+import Book from './Book'
+import * as BooksAPI from '../BooksAPI'
 
 class SearchBooks extends Component {
     state = {
-        query: ''
+        query: '',
+        searchedBooks: []
+    }
+    updateBookShelf = (results) => {
+            for (let result of results){
+                for (let book of this.props.books)
+                    if (result.id === book.id) {
+                        result.shelf = book.shelf
+                    } else {
+                        result.shelf = 'none'
+                    
+                    }            
+        }
+    }
+    searchBooks = (query) => {
+        this.setState({query: query.trim()})
+        if (query){
+            BooksAPI.search(query.trim(), 20).then((results) => {
+                if(!results || results.error){
+                    this.setState({searchedBooks: []})
+                } else {
+                    this.updateBookShelf(results)
+                    this.setState({searchedBooks:results}) 
+                }
+            }              
+         )} else {
+                this.setState({searchedBooks: []})
+            }  
     }
     updateQuery = (query) => {
-        this.setState({
-            query: query.trim()
-        })
+        this.setState({ query: query.trim() }, this.searchBooks(query))
     }
+
     render() {
-        let { query } = this.state
+        let { query, searchedBooks } = this.state
+        
         return(
             <div className="search-books">
                 <div className="search-books-bar">
@@ -34,16 +62,20 @@ class SearchBooks extends Component {
                             type="text" 
                             placeholder="Search by title or author" 
                         />
-
                     </div>
                 </div>
                 <div className="search-books-results">
-                    <p>
-                    {query}
-                    </p>
+                { searchedBooks !== null && (
                     <ol className="books-grid">
+                        {  searchedBooks.map(searchBook => (
+                                    <li key={searchBook.id}>
+                                        <Book moveAction={this.props.moveBook}  book={searchBook} />
+                                    </li>
+                            ))
+                         }  
                         
                     </ol>
+                )}
                 </div>
             </div>
         )
