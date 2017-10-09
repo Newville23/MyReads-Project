@@ -17,12 +17,14 @@ class BooksApp extends Component {
   }
 
   updateBooks = (book, shelf) => {
-    BooksAPI.update(book, shelf)
-    BooksAPI.getAll().then((books) => {
-      this.setState({ books })
-    })
-    console.log('ya lo actualice')
-  }
+      BooksAPI.update(book, shelf).then(() => {
+        BooksAPI.getAll().then((books) => {
+          this.setState({ books })
+        })
+      })
+      console.log('ya lo actualice, legal!')
+    }
+  
 
   render() {
     let { books } = this.state
