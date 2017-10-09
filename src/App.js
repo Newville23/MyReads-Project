@@ -25,7 +25,6 @@ class BooksApp extends Component {
       console.log('ya lo actualice, legal!')
     }
   
-
   render() {
     let { books } = this.state
     return (

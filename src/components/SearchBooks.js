@@ -12,7 +12,7 @@ class SearchBooks extends Component {
     }
     updateBookShelf = (results) => {
         let books = results.map((book) => {
-            let found = this.props.books.find((b) => {b.id === book.id})
+            let found = this.props.books.find((b) => b.id === book.id)
             if(found){
                 book.shelf = found.shelf
                 console.log('libro en estante ')
@@ -21,7 +21,7 @@ class SearchBooks extends Component {
             }
             return book 
         })
-        return books
+        this.setState({searchedBooks: books}) 
     }
     searchBooks = (query) => {
         this.setState({query: query.trim()})
@@ -31,7 +31,6 @@ class SearchBooks extends Component {
                     this.setState({searchedBooks: []})
                 } else {
                     this.updateBookShelf(results)
-                    this.setState({searchedBooks:results}) 
                 }
             }              
          )} else {
