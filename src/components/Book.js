@@ -2,9 +2,6 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
 class Book extends Component {
-    state = {
-        shelfSelect: this.props.book.shelf
-    }
     handleChange(value) {
         this.props.moveAction( this.props.book, value)
     }
@@ -16,7 +13,7 @@ class Book extends Component {
                 <div className="book-top">
                     <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${book.imageLinks.thumbnail})` }}></div>
                     <div className="book-shelf-changer">
-                          <select value={this.state.shelfSelect} onChange={(event) => this.handleChange(event.target.value)}>
+                          <select value={this.props.book.shelf} onChange={(event) => this.handleChange(event.target.value)}>
                             <option value="none" disabled>Move to...</option>
                             <option value="currentlyReading">Currently Reading</option>
                             <option value="wantToRead">Want to Read</option>
