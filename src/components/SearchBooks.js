@@ -4,6 +4,7 @@ import PropTypes from 'prop-types'
 import escapeRegExp from 'escape-string-regexp'
 import Book from './Book'
 import * as BooksAPI from '../BooksAPI'
+import { Debounce } from 'react-throttle';
 
 class SearchBooks extends Component {
     state = {
@@ -15,8 +16,8 @@ class SearchBooks extends Component {
             let found = this.props.books.find((b) => b.id === book.id)
             if(found){
                 book.shelf = found.shelf
-                console.log('libro en estante ')
-            }else{
+            }
+            if(!book.shelf){
                 book.shelf = "none"
             }
             return book 
@@ -57,13 +58,16 @@ class SearchBooks extends Component {
                   However, remember that the BooksAPI.search method DOES search by title or author. So, don't worry if
                   you don't find a specific author or title. Every search is limited by search terms.
                 */}
-                        <input 
-                            onChange={(event) => this.updateQuery(event.target.value)} 
-                            value={query}
-                            type="text" 
-                            placeholder="Search by title or author" 
-                        />
+                        <Debounce time="400" handler="onChange">
+                            <input 
+                                onChange={(event) => this.updateQuery(event.target.value)} 
+                                value={query}
+                                type="text" 
+                                placeholder="Search by title or author" 
+                            />
+                        </Debounce>
                     </div>
+               
                 </div>
                 <div className="search-books-results">
                 { searchedBooks !== null && (

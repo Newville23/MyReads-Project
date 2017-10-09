@@ -4,9 +4,8 @@ import PropTypes from 'prop-types'
 import escapeRegExp from 'escape-string-regexp'
 import Book from './Book'
 
-class BookShelf extends Component {
-    render() {
-        const { shelf, booksShelved } = this.props
+const BookShelf  = (props) => {
+        const { shelf, booksShelved } = props
         let rackBooks = booksShelved.filter((book) => book.shelf === shelf.filter); 
         return(
             <div className="bookshelf">
@@ -16,7 +15,7 @@ class BookShelf extends Component {
                         {
                             rackBooks.map((bookShelved) => (
                                 <li key={bookShelved.id}>
-                                    <Book moveAction={this.props.moveBook}  book={bookShelved} />
+                                    <Book moveAction={props.moveBook}  book={bookShelved} />
                                 </li>
                             ))
                         }
@@ -24,7 +23,6 @@ class BookShelf extends Component {
                 </div>
             </div>
         )
-    }
 }
 
 export default BookShelf;
