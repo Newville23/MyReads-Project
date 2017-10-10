@@ -7,6 +7,10 @@ import * as BooksAPI from '../BooksAPI'
 import { Debounce } from 'react-throttle';
 
 class SearchBooks extends Component {
+    static PropTypes = {
+        books: PropTypes.array.isRequired,
+        moveBook: PropTypes.func.isRequired
+    }
     state = {
         query: '',
         searchedBooks: []
@@ -58,14 +62,14 @@ class SearchBooks extends Component {
                   However, remember that the BooksAPI.search method DOES search by title or author. So, don't worry if
                   you don't find a specific author or title. Every search is limited by search terms.
                 */}
-                        <Debounce time="400" handler="onChange">
+                        {/* <Debounce handler="onChange"> */}
                             <input 
                                 onChange={(event) => this.updateQuery(event.target.value)} 
                                 value={query}
                                 type="text" 
                                 placeholder="Search by title or author" 
                             />
-                        </Debounce>
+                        {/* </Debounce> */}
                     </div>
                
                 </div>

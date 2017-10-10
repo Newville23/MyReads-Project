@@ -25,4 +25,9 @@ const BookShelf  = (props) => {
         )
 }
 
+BookShelf.PropTypes = {
+    shelf: PropTypes.object.isRequireds,
+    booksShelved: PropTypes.array.isRequireds
+}
+
 export default BookShelf;

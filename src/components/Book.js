@@ -2,6 +2,10 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
 class Book extends Component {
+    static PropTypes = {
+        book: PropTypes.object.isRequireds,
+        moveAction: PropTypes.func.isRequireds
+    }
     handleChange(value) {
         this.props.moveAction( this.props.book, value)
     }
