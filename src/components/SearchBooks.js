@@ -29,18 +29,20 @@ class SearchBooks extends Component {
         this.setState({searchedBooks: books}) 
     }
     searchBooks = (query) => {
-        this.setState({query: query.trim()})
-        if (query){
-            BooksAPI.search(query.trim(), 20).then((results) => {
-                if(!results || results.error){
+        Debounce(500, () =>{
+            this.setState({query: query.trim()})
+            if (query){
+                BooksAPI.search(query.trim(), 20).then((results) => {
+                    if(!results || results.error){
+                        this.setState({searchedBooks: []})
+                    } else {
+                        this.updateBookShelf(results)
+                    }
+                }              
+             )} else {
                     this.setState({searchedBooks: []})
-                } else {
-                    this.updateBookShelf(results)
-                }
-            }              
-         )} else {
-                this.setState({searchedBooks: []})
-        }  
+            } 
+        })
     }
     updateQuery = (query) => {
         this.setState({ query: query.trim() }, this.searchBooks(query))
