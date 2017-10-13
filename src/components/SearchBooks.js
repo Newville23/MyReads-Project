@@ -29,20 +29,20 @@ class SearchBooks extends Component {
         this.setState({searchedBooks: books}) 
     }
     searchBooks = (query) => {
-        Debounce(500, () =>{
-            this.setState({query: query.trim()})
-            if (query){
-                BooksAPI.search(query.trim(), 20).then((results) => {
-                    if(!results || results.error){
-                        this.setState({searchedBooks: []})
-                    } else {
-                        this.updateBookShelf(results)
-                    }
-                }              
-             )} else {
+        this.setState({query: query.trim()})
+        if (query){
+
+            BooksAPI.search(query.trim(), 20).then((results) => {
+                if(!results || results.error){
                     this.setState({searchedBooks: []})
-            } 
-        })
+                } else {
+                    this.updateBookShelf(results)
+                }
+            }) 
+                         
+        } else {
+                this.setState({searchedBooks: []})
+        }  
     }
     updateQuery = (query) => {
         this.setState({ query: query.trim() }, this.searchBooks(query))
@@ -64,14 +64,12 @@ class SearchBooks extends Component {
                   However, remember that the BooksAPI.search method DOES search by title or author. So, don't worry if
                   you don't find a specific author or title. Every search is limited by search terms.
                 */}
-                        {/* <Debounce handler="onChange"> */}
                             <input 
                                 onChange={(event) => this.updateQuery(event.target.value)} 
                                 value={query}
                                 type="text" 
                                 placeholder="Search by title or author" 
                             />
-                        {/* </Debounce> */}
                     </div>
                
                 </div>
