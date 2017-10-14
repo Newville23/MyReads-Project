@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import * as BooksAPI from './BooksAPI';
-import {Route} from 'react-router-dom';
+import {Router, Route, } from 'react-router-dom';
 import SearchBooks from './components/SearchBooks';
 import ListBooks from './components/ListBooks';
 import './App.css';
@@ -29,12 +29,14 @@ class BooksApp extends Component {
     let { books } = this.state
     return (
       <div className="app">
+      <Router history={hashHistory} onUpdate={logPageView}>
         <Route exact path="/" render={() => (
           <ListBooks books={books} moveBook={this.updateBooks}/>
         )}/>
         <Route path="/search" render={() => (
           <SearchBooks books={books} moveBook={this.updateBooks}/>
         )}/>
+        </Router>
       </div>
     )
   }

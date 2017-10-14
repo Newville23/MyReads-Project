@@ -1,17 +1,22 @@
 {
+  "homepage": "https://newville23.github.io/MyReads-Project/",
   "dependencies": {
     "escape-string-regexp": "^1.0.5",
+    "gh-pages": "^1.0.0",
     "prop-types": "^15.5.8",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
     "react-router-dom": "^4.2.2",
     "react-throttle": "^0.3.0",
-    "sort-by": "^1.2.0"
+    "sort-by": "^1.2.0",
+    "throttle-debounce": "^1.0.1"
   },
   "devDependencies": {
     "react-scripts": "0.9.5"
   },
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
