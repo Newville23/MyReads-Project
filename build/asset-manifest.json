@@ -1,8 +1,13 @@
 {
   "main.css": "static/css/main.ca97cc64.css",
   "main.css.map": "static/css/main.ca97cc64.css.map",
+<<<<<<< HEAD
   "main.js": "static/js/main.6ada11bf.js",
   "main.js.map": "static/js/main.6ada11bf.js.map",
+=======
+  "main.js": "static/js/main.00237875.js",
+  "main.js.map": "static/js/main.00237875.js.map",
+>>>>>>> 68c815d0a0a3756813108a6a2a000a5886bbe221
   "static/media/add.svg": "static/media/add.bb9363b8.svg",
   "static/media/arrow-back.svg": "static/media/arrow-back.3687aa98.svg",
   "static/media/arrow-drop-down.svg": "static/media/arrow-drop-down.78c6f53b.svg"
