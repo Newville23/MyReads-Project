@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import escapeRegExp from 'escape-string-regexp'
 import Book from './Book'
-import * as BooksAPI from '../BooksAPI'
+import * as BooksAPI from '../utils/BooksAPI'
 import { Debounce } from 'react-throttle';
 
 class SearchBooks extends Component {
