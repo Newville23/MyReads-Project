@@ -9,10 +9,7 @@
     "react-router-dom": "^4.2.2",
     "react-throttle": "^0.3.0",
     "sort-by": "^1.2.0",
-<<<<<<< HEAD
     "styled-components": "^2.2.1",
-=======
->>>>>>> 68c815d0a0a3756813108a6a2a000a5886bbe221
     "throttle-debounce": "^1.0.1"
   },
   "devDependencies": {
