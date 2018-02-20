@@ -38,14 +38,14 @@ class SearchBooks extends Component {
                 } else {
                     this.updateBookShelf(results)
                 }
-            }) 
-                         
+            })           
         } else {
-                this.setState({searchedBooks: []})
+            this.setState({searchedBooks: []})
         }  
     }
     updateQuery = (query) => {
-        this.setState({ query: query.trim() }, this.searchBooks(query))
+        this.setState(() => ({ query: query.trim() }));
+        this.searchBooks(query);
     }
 
     render() {
@@ -64,13 +64,16 @@ class SearchBooks extends Component {
                   However, remember that the BooksAPI.search method DOES search by title or author. So, don't worry if
                   you don't find a specific author or title. Every search is limited by search terms.
                 */}
+
+                    <Debounce time="400" handler="onChange">
                             <input 
                                 onChange={(event) => this.updateQuery(event.target.value)} 
-                                value={query}
                                 type="text" 
                                 placeholder="Search by title or author" 
                             />
+                            </Debounce>
                     </div>
+
                
                 </div>
                 <div className="search-books-results">
