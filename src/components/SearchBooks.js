@@ -85,7 +85,7 @@ class SearchBooks extends Component {
                         
                     </ol>
                 ):(
-                    <p> We haven't found results for your query </p>
+                    <p className="sorry-message"> We haven't found results for your query :(</p>
                 )}
                 </div>
             </div>
