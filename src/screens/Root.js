@@ -1,17 +1,17 @@
 import React, { Component } from 'react';
-import * as BooksAPI from './utils/BooksAPI';
+import * as BooksAPI from '../utils/BooksAPI';
 import {Router, Route, } from 'react-router-dom';
 import ScreenBookList from './Book/List';
 import ScreenBookSearch from './Book/Search';
-import './style/App.css';
+import '../style/App.css';
 
 class ScreenRoot extends Component {
     constructor(props) {
-        super(props)
-        state = {
+        super(props);
+        this.state = {
             books: []
           }
-          this.StoreMoveBook = this.StoreMoveBook.bind(this);
+          this.updateBooks = this.updateBooks.bind(this);
     }
 
 
