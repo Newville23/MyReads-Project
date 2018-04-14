@@ -11,7 +11,8 @@ class BookSearch extends Component {
         super(props);
         this.state = {
             query: '',
-            searchedBooks: []
+            searchedBooks: [],
+            print: ''
         }
     }
 
