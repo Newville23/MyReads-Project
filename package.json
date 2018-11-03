@@ -2,6 +2,7 @@
   "homepage": "https://newville23.github.io/MyReads-Project/",
   "dependencies": {
     "escape-string-regexp": "^1.0.5",
+    "eslint": "^5.8.0",
     "gh-pages": "^1.0.0",
     "node-sass-chokidar": "^1.2.2",
     "npm-run-all": "^4.1.2",
